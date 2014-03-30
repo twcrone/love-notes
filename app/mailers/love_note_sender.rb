@@ -9,6 +9,6 @@ class LoveNoteSender < ActionMailer::Base
   def send_text_message(note)
     @greeting = note.message
 
-    mail to: '8593611777@vtext.com, twcrone@gmail.com'
+    mail to: '8593611777@vtext.com, twcrone@gmail.com', subject: 'Love Note'
   end
 end
