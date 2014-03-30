@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20140330045407) do
 
   create_table "notes", force: true do |t|
     t.string   "message"
+    t.datetime "sent_at"
     t.datetime "created_at"
-    t.date     "sent_at"
     t.datetime "updated_at"
   end
 

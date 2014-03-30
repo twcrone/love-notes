@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_note, only: [:show, :edit, :update, :destroy, :send_note]
 
   # GET /notes
   # GET /notes.json
@@ -33,6 +33,21 @@ class NotesController < ApplicationController
         format.json { render action: 'show', status: :created, location: @note }
       else
         format.html { render action: 'new' }
+        format.json { render json: @note.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /notes/1/send_note
+  def send_note
+    @note.sent_at = DateTime.now
+
+    respond_to do |format|
+      if @note.save
+        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
+        format.json { render action: 'show', status: :ok, location: @note }
+      else
+        format.html { render action: 'edit' }
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
