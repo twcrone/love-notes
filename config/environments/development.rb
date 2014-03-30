@@ -35,12 +35,23 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  ActionMailer::Base.delivery_method = :smtp
+  #ActionMailer::Base.delivery_method = :smtp
+  #ActionMailer::Base.smtp_settings = {
+  #    :user_name => 'heroku-51c1990e08e2fc1d',
+  #    :password => '820a819d3e213db0',
+  #    :address => 'mailtrap.io',
+  #    :port => 2525,
+  #    :authentication => :plain
+  #}
+
   ActionMailer::Base.smtp_settings = {
-      :user_name => 'heroku-51c1990e08e2fc1d',
-      :password => '820a819d3e213db0',
-      :address => 'mailtrap.io',
-      :port => 2525,
+      :port =>           '587',
+      :address =>        'smtp.mandrillapp.com',
+      :user_name =>      'app23538901@heroku.com',
+      :password =>       'doQFNHjm1HSJaakXBeixyQ',
+      :domain =>         'heroku.com',
       :authentication => :plain
   }
+  ActionMailer::Base.delivery_method = :smtp
+
 end
