@@ -4,8 +4,8 @@
   <thead>
     <tr>
       <th>Message</th>
-      <th>Created at</th>
-      <th>Sent at</th>
+      <th>Created</th>
+      <th>Sent</th>
     </tr>
   </thead>
 
@@ -13,8 +13,8 @@
     <% @notes.each do |note| %>
       <tr>
         <td><%= note.message %></td>
-        <td><%= note.created_at %></td>
-        <td><%= note.sent_at %></td>
+        <td><%= note.created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%m/%d/%Y') %></td>
+        <td><%= note.sent_at.in_time_zone("Eastern Time (US & Canada)").strftime('%m/%d/%Y') %></td>
       </tr>
     <% end %>
   </tbody>
