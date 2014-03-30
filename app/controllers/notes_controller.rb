@@ -1,3 +1,5 @@
+require 'nexmo'
+
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy, :send_note]
 
@@ -40,6 +42,10 @@ class NotesController < ApplicationController
 
   # PATCH/PUT /notes/1/send_note
   def send_note
+
+    nexmo = Nexmo::Client.new('71113321', '87671ac6')
+    nexmo.send_message!({:to => '18593611777', from: '14358501011', :text => @note.message})
+
     @note.sent_at = DateTime.now
 
     respond_to do |format|
