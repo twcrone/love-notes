@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :notes
 
-  root 'welcome#index'
+  root 'notes#index'
 
-  get '/notes/#id/send_note', to: 'notes#send_note'
+  get '/notes/#id/send_message', to: 'notes#send_message'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

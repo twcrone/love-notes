@@ -1,7 +1,7 @@
 require 'nexmo'
 
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :edit, :update, :destroy, :send_note]
+  before_action :set_note, only: [:show, :edit, :update, :destroy, :send_message]
 
   # GET /notes
   # GET /notes.json
@@ -40,8 +40,8 @@ class NotesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /notes/1/send_note
-  def send_note
+  # PATCH/PUT /notes/1/send_message
+  def send_message
 
     nexmo = Nexmo::Client.new('71113321', '87671ac6')
     nexmo.send_message!({:to => '18593611777', from: '14358501011', :text => @note.message})
