@@ -40,6 +40,6 @@ gem 'spring',        group: :development
 
 gem 'rails_12factor', group: :production
 
-gem 'rest-client'
+gem 'unicorn'
 
 ruby "1.9.3"
