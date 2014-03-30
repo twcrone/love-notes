@@ -1,4 +1,4 @@
-require 'nexmo'
+require 'rest-client'
 
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy, :send_message]
@@ -43,8 +43,8 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1/send_message
   def send_message
 
-    nexmo = Nexmo::Client.new('71113321', '87671ac6')
-    nexmo.send_message!({:to => '18593611777', from: '14358501011', :text => @note.message})
+    blowerio = RestClient::Resource.new('https://4fd05a53-a39e-4204-99d7-845f3d890ef2:gJmpsaioGxMmfNuAK46-eQ@api.blower.io/')
+    blowerio['/messages'].post :to => '+18593611777', :message => @note.message
 
     @note.sent_at = DateTime.now
 
