@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :edit, :update, :destroy, :send_message]
+  before_action :set_note, only: [:show, :edit, :update, :destroy, :send_message, :reset]
 
   # GET /
   def sent
@@ -51,10 +51,10 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
+        format.html { redirect_to @note, notice: 'Note was successfully sent.' }
         format.json { render action: 'show', status: :ok, location: @note }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'show' }
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
@@ -66,6 +66,20 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note.update(note_params)
         format.html { redirect_to @note, notice: 'Note was successfully updated.' }
+        format.json { render action: 'show', status: :ok, location: @note }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @note.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /notes/1/reset
+  def reset
+    @note.sent_at = nil
+    respond_to do |format|
+      if @note.save
+        format.html { redirect_to @note, notice: 'Note was successfully reset.' }
         format.json { render action: 'show', status: :ok, location: @note }
       else
         format.html { render action: 'edit' }
