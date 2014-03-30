@@ -1,8 +1,9 @@
 def find_unsent_message_and_send
   puts "Sending love note..."
-  note = Note.find_by sent_at: nil
+  note = Note.where('sent_at IS NULL').first
 
   if note
+    puts "Sending note #{note.id}"
     LoveNoteSender.send_text_message(note).deliver
     puts "Sending #{note.message}..."
     note.sent_at = DateTime.now
@@ -23,5 +24,11 @@ task :send_love_note => :environment do
     find_unsent_message_and_send
   end
 
+  puts "Done."
+end
+
+desc "Force send a love note"
+task :force_send_love_note => :environment do
+  find_unsent_message_and_send
   puts "Done."
 end
