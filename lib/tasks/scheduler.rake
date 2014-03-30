@@ -1,12 +1,4 @@
-desc "Send a love note"
-task :send_love_note => :environment do
-  num = rand(10)
-
-  if num != 7
-    puts "Number was #{num} and not 7.  Not sending love note."
-    return
-  end
-
+def find_unsent_message_and_send
   puts "Sending love note..."
   note = Note.find_by sent_at: nil
 
@@ -19,5 +11,17 @@ task :send_love_note => :environment do
   else
     puts 'No pending notes found.'
   end
+end
+
+desc "Send a love note"
+task :send_love_note => :environment do
+  num = rand(10)
+
+  if num != 7
+    puts "Number was #{num} and not 7.  Not sending love note."
+  else
+    find_unsent_message_and_send
+  end
+
   puts "Done."
 end
