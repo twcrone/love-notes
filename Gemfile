@@ -40,4 +40,4 @@ gem 'spring',        group: :development
 
 gem 'rails_12factor', group: :production
 
-ruby "1.9.3p448"
+ruby "1.9.3"
