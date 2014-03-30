@@ -1,5 +1,3 @@
-require 'rest-client'
-
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy, :send_message]
 
@@ -43,9 +41,7 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1/send_message
   def send_message
 
-    blowerio = RestClient::Resource.new('https://4fd05a53-a39e-4204-99d7-845f3d890ef2:gJmpsaioGxMmfNuAK46-eQ@api.blower.io/')
-    blowerio['/messages'].post :to => '+18593611777', :message => @note.message
-
+    LoveNoteSender.send_text_message(@note).deliver
     @note.sent_at = DateTime.now
 
     respond_to do |format|
