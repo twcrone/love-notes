@@ -1,7 +1,11 @@
 def find_unsent_message_and_send
   puts "Sending love note..."
-  note = Note.where('sent_at IS NULL').first
-
+  notes = Note.where('sent_at IS NULL')
+  count = notes.length
+  puts "Found #{count} unsent notes..."
+  index = rand(count)
+  puts "Picking note at index=#{index}"
+  note = notes[index]
   if note
     puts "Sending note #{note.id}"
     LoveNoteSender.send_text_message(note).deliver
