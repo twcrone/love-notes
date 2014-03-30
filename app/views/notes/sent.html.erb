@@ -1,0 +1,21 @@
+<h1>Sent Love Notes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th>Created at</th>
+      <th>Sent at</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @notes.each do |note| %>
+      <tr>
+        <td><%= note.message %></td>
+        <td><%= note.created_at %></td>
+        <td><%= note.sent_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

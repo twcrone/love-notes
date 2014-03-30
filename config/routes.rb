@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :notes
 
-  root 'notes#index'
+  root 'notes#sent'
 
   get '/notes/#id/send_message', to: 'notes#send_message'
   # The priority is based upon order of creation: first created -> highest priority.

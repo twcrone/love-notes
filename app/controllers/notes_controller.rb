@@ -1,6 +1,11 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy, :send_message]
 
+  # GET /
+  def sent
+    @notes = Note.where('sent_at IS NOT NULL')
+  end
+
   # GET /notes
   # GET /notes.json
   def index
