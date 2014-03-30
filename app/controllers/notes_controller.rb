@@ -25,6 +25,7 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(note_params)
+    @note.created_at = DateTime.now
 
     respond_to do |format|
       if @note.save
