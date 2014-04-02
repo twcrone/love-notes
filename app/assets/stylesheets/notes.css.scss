@@ -1,3 +1,23 @@
 // Place all the styles related to the Notes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+table{
+  width: 600px;
+  border-collapse: collapse;
+}
+th, td{
+  border: none;
+}
+th{
+  background-color: navy;
+  color: #ffffff;
+}
+tr:nth-of-type(even){
+  background-color: lightblue;
+}
+tr:nth-of-type(odd) {
+  background-color:#ffffff;
+}
+td:nth-child(n+2){
+  text-align: right;
+}
