@@ -91,4 +91,5 @@ Rails.application.configure do
   }
   ActionMailer::Base.delivery_method = :smtp
 
+  config.middleware.insert 0, "Rack::WWWhisper"
 end
