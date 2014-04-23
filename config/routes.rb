@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get '/notes/#id/send_message', to: 'notes#send_message'
   get '/notes/#id/reset', to: 'notes#reset'
+  get '/send_unsent_message', to: 'notes#send_unsent_message'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

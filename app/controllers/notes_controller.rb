@@ -60,6 +60,38 @@ class NotesController < ApplicationController
     end
   end
 
+  # PATCH/PUT /notes/send_unsent_message
+  def send_unsent_message
+    puts "Sending love note..."
+    notes = Note.where('sent_at IS NULL')
+    count = notes.length
+    puts "Found #{count} unsent notes..."
+    index = rand(count)
+    puts "Picking note at index=#{index}"
+    note = notes[index]
+
+    if note
+      puts "Sending note #{note.id}"
+      LoveNoteSender.send_text_message(note).deliver
+      puts "Sending #{note.message}..."
+      note.sent_at = DateTime.now
+      puts "Saving sent at #{note.sent_at}..."
+      note.save
+    else
+      puts 'No pending notes found.'
+    end
+
+    respond_to do |format|
+      if note
+        format.html { redirect_to note, notice: 'Note was successfully sent.' }
+        format.json { render action: 'show', status: :ok, location: note }
+      else
+        format.html { render action: 'show' }
+        format.json { render json: note.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /notes/1
   # PATCH/PUT /notes/1.json
   def update
