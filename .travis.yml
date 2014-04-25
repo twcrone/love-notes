@@ -1,5 +1,5 @@
 before_script:
-  - psql -c 'create database love-notes_test;' -U postgres
+  - psql -c 'create database love_notes_test;' -U postgres
 
 language: ruby
 rvm:

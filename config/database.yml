@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: love-notes_development
+  database: love_notes_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -55,7 +55,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: love-notes_test
+  database: love_notes_test
 
 # Do not keep production credentials in the repository,
 # instead read the configuration from the environment.
