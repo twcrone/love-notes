@@ -20,7 +20,7 @@ end
 
 desc "Send a love note"
 task :send_love_note => :environment do
-  num = rand(9)
+  num = rand(8)
 
   if num != 7
     puts "Number was #{num} and not 7.  Not sending love note."
