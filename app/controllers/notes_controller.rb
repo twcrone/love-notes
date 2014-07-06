@@ -9,7 +9,8 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
+    #@notes = Note.all
+    @notes = Note.where('sent_at IS NULL').order('created_at DESC')
   end
 
   # GET /notes/1
