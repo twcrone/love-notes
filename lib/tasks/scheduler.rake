@@ -22,9 +22,8 @@ end
 def send_oldest_sent_message
   puts "Sending old love note..."
   note = Note.where('sent_at IS NOT NULL').order('sent_at ASC').first
-  return unless note
   LoveNoteSender.send_text_message(note).deliver
-  puts "Sending #{note.message}...sent on #{{note.sent_at}}"
+  puts "Sending #{note.message}...sent on #{note.sent_at}"
   note.sent_at = DateTime.now
   puts "Saving sent at #{note.sent_at}..."
   note.save
