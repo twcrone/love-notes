@@ -7,7 +7,7 @@ class LoveNoteSender < ActionMailer::Base
   #   en.love_note_sender.send_text_message.subject
   #
   def send_text_message(note)
-    @greeting = note.message
+    @greeting = note.message + "(" + note.created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%m/%d/%Y') + ")"
 
     mail to: '8593613596@vtext.com, tkcrone@gmail.com, 8593611777@vtext.com, twcrone@gmail.com', subject: 'Love Note'
   end
