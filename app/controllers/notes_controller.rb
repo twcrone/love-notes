@@ -3,7 +3,7 @@ class NotesController < ApplicationController
 
   # GET /
   def sent
-    @notes = Note.where('sent_at IS NOT NULL').order('sent_at DESC')
+    @notes = Note.where('sent_at IS NOT NULL').order('sent_at DESC').limit(10)
   end
 
   # GET /notes
