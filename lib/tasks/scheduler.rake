@@ -31,11 +31,11 @@ end
 
 desc "Send a love note"
 task :send_love_note => :environment do
-  num = rand(25)
+  num = rand(30)
 
-  if num == 17 || num == 10
+  if num == 17
     find_unsent_message_and_send
-  elsif num == 12
+  elsif num == 10
     puts 'Sending an old note'
     send_oldest_sent_message
   else
