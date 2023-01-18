@@ -60,7 +60,7 @@ GEM
     net-http-persistent (2.9.4)
     pg (0.17.1)
     polyglot (0.3.4)
-    rack (1.5.2)
+    rack (1.5.5)
     rack-test (0.6.2)
       rack (>= 1.0)
     rack-wwwhisper (1.1.7)
